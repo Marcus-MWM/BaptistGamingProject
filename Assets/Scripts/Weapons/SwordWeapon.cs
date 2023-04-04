@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SwordWeapon : MonoBehaviour
 {
 
@@ -11,6 +12,7 @@ public class SwordWeapon : MonoBehaviour
     public bool isAttacking = false;
     // public AudioSource emptySound;
     public float targetDistance;
+    public float rangeSword = 2;
     public int damageAmount = 10;
 
 
@@ -31,7 +33,10 @@ public class SwordWeapon : MonoBehaviour
         // GlobalAmmo.handgunAmmo -= 1;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out theHit)){
             targetDistance = theHit.distance;
-            theHit.transform.SendMessage("DamageEnemy", damageAmount, SendMessageOptions.DontRequireReceiver);
+            if(targetDistance <= rangeSword){
+                theHit.transform.SendMessage("DamageEnemy", damageAmount, SendMessageOptions.DontRequireReceiver);
+            }
+            // theHit.transform.SendMessage("DamageEnemy", damageAmount, SendMessageOptions.DontRequireReceiver);
         }
 
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out theHit)){

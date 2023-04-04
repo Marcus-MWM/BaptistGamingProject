@@ -20,6 +20,19 @@ public class ZombieFollow : MonoBehaviour
     public AudioSource[] hurtSound;
     public GameObject hurtFlash;
 
+    public float startPosition;
+    void Start()
+    {
+        // startPosition = transform.position;
+        // Debug.Log(startPosition + " at!");
+        // if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out Shot)) {
+        //     // Debug.Log(Shot.transform.name + " EnemySee!");
+        //     startPosition = Shot.distance;
+        //     Debug.Log(startPosition + " at!");
+            
+        // }
+    }
+
     void Update() {
         TheEnemy.transform.LookAt(thePlayer.transform);
         if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out Shot)) {
