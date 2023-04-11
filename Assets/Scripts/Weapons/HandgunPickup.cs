@@ -10,6 +10,7 @@ public class HandgunPickup : MonoBehaviour
     public AudioSource handgunPickupSound;
     public GameObject pickUpDisplay;
     public GameObject pistolImage;
+    public static bool hasGun = false;
 
     void OnTriggerEnter(Collider other){
         realHandgun.SetActive(true);
@@ -20,5 +21,6 @@ public class HandgunPickup : MonoBehaviour
         pickUpDisplay.GetComponent<Text>().text = "HANDGUN";
         pickUpDisplay.SetActive(true);
         pistolImage.SetActive(true);
+        hasGun = true;
     }
 }

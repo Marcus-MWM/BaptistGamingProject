@@ -9,6 +9,7 @@ public class EnemyDeath : MonoBehaviour
     public GameObject enemyAI;
     public GameObject theEnemy;
     public GameObject bodyEnemy;
+    public GameObject healthBox;
     
     void DamageEnemy(int damageAmount){
         enemyHealth -= damageAmount;
@@ -17,6 +18,7 @@ public class EnemyDeath : MonoBehaviour
     void Update()
     {
         if(enemyHealth <= 0 && enemyDead == false){
+            int precentHealth = Random.Range(1,11);
             enemyDead = true;
             theEnemy.GetComponent<Animator>().Play("Death");
             Debug.Log ("DEAD YAY!");
@@ -25,6 +27,12 @@ public class EnemyDeath : MonoBehaviour
             bodyEnemy.GetComponent<BoxCollider>().enabled = false;
             GlobalScore.scoreValue += 100;
             GlobalComplete.enemyCount += 1;
+            Debug.Log(precentHealth + " is this precent!");
+            if(precentHealth > 5){
+                Debug.Log("Has health box");
+                healthBox.SetActive(true);
+            }
+            
         }
         
     }
