@@ -35,29 +35,42 @@ public class ZombieFollow : MonoBehaviour
 
     void Update() {
         TheEnemy.transform.LookAt(thePlayer.transform);
-        if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out Shot)) {
-            // Debug.Log(Shot.transform.name + " EnemySee!");
-            TargetDistance = Shot.distance;
-            if(TargetDistance < AllowRange && (Shot.transform.name == "EnemyTrigger" || Shot.transform.name == "Capsule")){
-                EnemySpeed = 0.02f;
-                if (AttackTrigger == 0) {
-                    TheEnemy.GetComponent<Animator>().Play("Run_guard");
-                    TheEnemy.transform.position = Vector3.MoveTowards(TheEnemy.transform.position, thePlayer.transform.position, EnemySpeed);
+
+        Vector3 direction = thePlayer.transform.position - transform.position;
+        direction.y = 0f; // Set Y component to 0 to prevent looking up
+
+        // Rotate the object towards the player
+        TheEnemy.transform.rotation = Quaternion.LookRotation(direction);
+        if(PauseMenu.Paused == false){
+            if (Physics.Raycast (transform.position, transform.TransformDirection(Vector3.forward), out Shot)) {
+                // Debug.Log(Shot.transform.name + " EnemySee!");
+                TargetDistance = Shot.distance;
+                if(TargetDistance < AllowRange && (Shot.transform.name == "EnemyTrigger" || Shot.transform.name == "Capsule")){
+                    // if(TargetDistance < 0.7){
+                    //     AttackTrigger = 1;
+                    // } else {
+                    //     AttackTrigger = 0;
+                    // }
+                    EnemySpeed = 0.02f;
+                    if (AttackTrigger == 0) {
+                        TheEnemy.GetComponent<Animator>().Play("Run_guard");
+                        TheEnemy.transform.position = Vector3.MoveTowards(TheEnemy.transform.position, thePlayer.transform.position, EnemySpeed);
+                    }
+                }
+                else {
+                    EnemySpeed = 0;
+                    TheEnemy.GetComponent<Animator>().Play("Idle");
                 }
             }
-            else {
-                EnemySpeed = 0;
-                TheEnemy.GetComponent<Animator>().Play("Idle");
-            }
-        }
 
-        if(AttackTrigger == 1 && isFiring == false){
-            EnemySpeed = 0;
-            StartCoroutine(EnemyFire());
-            
-        }
-        if(AttackTrigger == 1){
-            EnemySpeed = 0;  
+            if(AttackTrigger == 1 && isFiring == false){
+                EnemySpeed = 0;
+                StartCoroutine(EnemyFire());
+                
+            }
+            if(AttackTrigger == 1){
+                EnemySpeed = 0;  
+            }
         }
     }
 

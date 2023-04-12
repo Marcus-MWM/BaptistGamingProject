@@ -13,13 +13,12 @@ public class WeaponControls : MonoBehaviour
     public GameObject pistolImage;
     public GameObject realGun;
     public bool hasGun = false;
+    public GameObject swordImage;
+
     
     void Update()
     {
 
-        if(hasGun == true){
-            
-        }
         if(swordActive == false){
             if(Input.GetButtonDown("Switch")){
                 Debug.Log("Switch Weapon");
@@ -34,6 +33,7 @@ public class WeaponControls : MonoBehaviour
                 pickUpDisplay.GetComponent<Text>().text = "SWORD";
                 pickUpDisplay.SetActive(true);
                 pistolImage.SetActive(false);
+                swordImage.SetActive(true);
             }
         }
         if(gunActive == false){
@@ -48,9 +48,11 @@ public class WeaponControls : MonoBehaviour
                 pickUpDisplay.GetComponent<Text>().text = "HANDGUN";
                 pickUpDisplay.SetActive(true);
                 pistolImage.SetActive(true);
+                swordImage.SetActive(false);
                 
             }
         }
 
     }
+
 }

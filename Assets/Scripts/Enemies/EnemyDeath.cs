@@ -10,6 +10,8 @@ public class EnemyDeath : MonoBehaviour
     public GameObject theEnemy;
     public GameObject bodyEnemy;
     public GameObject healthBox;
+    public GameObject ammoBox;
+    public GameObject hurtFlash;
     
     void DamageEnemy(int damageAmount){
         enemyHealth -= damageAmount;
@@ -19,6 +21,7 @@ public class EnemyDeath : MonoBehaviour
     {
         if(enemyHealth <= 0 && enemyDead == false){
             int precentHealth = Random.Range(1,11);
+            int precentAmmo = Random.Range(1, 11);
             enemyDead = true;
             theEnemy.GetComponent<Animator>().Play("Death");
             Debug.Log ("DEAD YAY!");
@@ -32,7 +35,14 @@ public class EnemyDeath : MonoBehaviour
                 Debug.Log("Has health box");
                 healthBox.SetActive(true);
             }
-            
+            if(precentAmmo > 7){
+                Debug.Log("Has ammo box");
+                ammoBox.SetActive(true);
+            }
+            if (hurtFlash.activeSelf)
+            {
+                hurtFlash.SetActive(false);
+            }
         }
         
     }

@@ -15,17 +15,22 @@ public class SwordWeapon : MonoBehaviour
     public float rangeSword = 2;
     public int damageAmount = 10;
 
-
     void Update()
     {
         if(Input.GetButtonDown("Fire1")){
-
-            if(isAttacking == false){
+            if(PauseMenu.Paused2 == true){
+                StartCoroutine(startUpGame()); 
+                PauseMenu.Paused2 = false;
+            }
+            else if(isAttacking == false){
                 StartCoroutine(useSword());
             }
         }
     }
 
+    IEnumerator startUpGame(){
+        yield return new WaitForSeconds(5);
+    }
 
     IEnumerator useSword(){
         RaycastHit theHit;
@@ -42,7 +47,7 @@ public class SwordWeapon : MonoBehaviour
         if(Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out theHit)){
             Debug.Log(theHit.transform.name + " found!");
         }
-        theSword.GetComponent<Animator>().Play("HandgunFire");
+        theSword.GetComponent<Animator>().Play("SwordAttack");
         // muzzleFlash.SetActive(true);
         // gunFire.Play();
         

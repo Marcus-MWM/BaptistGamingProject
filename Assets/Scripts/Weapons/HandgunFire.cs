@@ -10,13 +10,16 @@ public class HandgunFire : MonoBehaviour
     public bool isFiring = false;
     public AudioSource emptySound;
     public float targetDistance;
-    public int damageAmount = 10;
+    public int damageAmount = 5;
     
     void Update()
     {
         if(Input.GetButtonDown("Fire1")){
-
-            if(GlobalAmmo.handgunAmmo < 1){
+            if(PauseMenu.Paused2 == true){
+                StartCoroutine(startUpGame()); 
+                PauseMenu.Paused2 = false;
+            }
+            else if(GlobalAmmo.handgunAmmo < 1){
                 // emptySound.Play();
             }
             else {
@@ -25,6 +28,10 @@ public class HandgunFire : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator startUpGame(){
+        yield return new WaitForSeconds(5);
     }
 
     IEnumerator FiringHandgun(){

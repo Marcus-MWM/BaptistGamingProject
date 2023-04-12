@@ -12,7 +12,12 @@ public class HandgunAmmoPick : MonoBehaviour
     void OnTriggerEnter(Collider other){
         fakeAmmoClip.SetActive(false);
         // ammoPickupSound.Play();
-        GlobalAmmo.handgunAmmo += 100;
+        if(GlobalAmmo.handgunAmmo >= 181){
+            GlobalAmmo.handgunAmmo = 200;
+        } 
+        else{
+            GlobalAmmo.handgunAmmo += 20;
+        }
         pickUpDisplay.SetActive(false);
         pickUpDisplay.GetComponent<Text>().text = "CLIP OF BULLETS";
         pickUpDisplay.SetActive(true);

@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class NextLevelMenu : MonoBehaviour
 {
+  void Start()
+    {
+      Cursor.lockState = CursorLockMode.None;
+		  Cursor.visible = true;
+    }
   //loads game scene
   public void Play() {
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);

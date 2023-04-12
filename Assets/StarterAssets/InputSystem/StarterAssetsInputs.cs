@@ -20,6 +20,35 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		void Update()
+		{
+			// if(Input.GetKeyDown(KeyCode.Escape)) {
+			// 	Cursor.lockState = CursorLockMode.None;
+            //     Cursor.visible = true;
+			// }
+			if(PauseMenu.Paused == false){
+				cursorLocked = true;
+				cursorInputForLook = true;
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = false;
+				// if(Cursor.visible == true){
+				// 	Cursor.visible = false;
+				// }
+			} else {
+				cursorLocked = false;
+				cursorInputForLook = false;
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+			if(PauseMenu.goingMenu == true){
+				cursorLocked = true;
+				cursorInputForLook = true;
+				// Cursor.lockState = CursorLockMode.None;
+				// Cursor.visible = true;
+			}
+		}
+
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		public void OnMove(InputValue value)
 		{
