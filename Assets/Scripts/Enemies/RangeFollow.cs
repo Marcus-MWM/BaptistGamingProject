@@ -51,7 +51,7 @@ public class RangeFollow : MonoBehaviour
                     } else {
                         AttackTrigger = 0;
                     }
-                    EnemySpeed = 0.02f;
+                    EnemySpeed = 0.1f;
                     if (AttackTrigger == 0) {
                         TheEnemy.GetComponent<Animator>().Play("Run_guard");
                         TheEnemy.transform.position = Vector3.MoveTowards(TheEnemy.transform.position, thePlayer.transform.position, EnemySpeed);

@@ -18,7 +18,7 @@ public class RecycleLevel : MonoBehaviour
             gameOver.SetActive(true);
         }
         else{
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 

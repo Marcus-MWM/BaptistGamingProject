@@ -12,7 +12,7 @@ public class Per10HealthCollect : MonoBehaviour
             GlobalHealth.healthValue = 100;
         } 
         else{
-            GlobalHealth.healthValue += 10;
+            GlobalHealth.healthValue += 20;
         }
         // collectSound.Play();
         GetComponent<BoxCollider>().enabled = false;

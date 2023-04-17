@@ -16,12 +16,18 @@ EditorBuildSettings:
     guid: 2cb59e18f053fbb488956a5e80387cb0
   - enabled: 1
     path: Assets/zippedscenes/Scenes/MainMenu.unity
+    guid: 20e3b5877fdf43e40ba505793f826a50
+  - enabled: 0
+    path: Assets/zippedscenes/Scenes/MainMenu2.unity
     guid: a1f2d39dda51fbb4c8dcff18ffd43ead
   - enabled: 1
     path: Assets/zippedscenes/Scenes/SampleScene.unity
     guid: 32d74f6989afb31429de9fd27547b002
   - enabled: 1
     path: Assets/zippedscenes/Scenes/PlayerWinScene.unity
+    guid: e93a3143a3c1f0646a9abaf19df1958a
+  - enabled: 0
+    path: Assets/zippedscenes/Scenes/PlayerWinScene2.unity
     guid: 219c6a0607f6f1b41b1fa94a39d416b2
   - enabled: 1
     path: Assets/zippedscenes/Scenes/Level2.unity
