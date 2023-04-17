@@ -27,7 +27,7 @@ public class EnemyDeath1 : MonoBehaviour
             theEnemy.GetComponent<Animator>().Play("Male Die");
             Debug.Log ("DEAD YAY!");
             enemyAI.SetActive(false);
-            theEnemy.GetComponent<LookPlayer>().enabled = false;
+            // theEnemy.GetComponent<LookPlayer>().enabled = false;
             bodyEnemy.GetComponent<BoxCollider>().enabled = false;
             GlobalScore.scoreValue += 100;
             GlobalComplete.enemyCount += 1;
